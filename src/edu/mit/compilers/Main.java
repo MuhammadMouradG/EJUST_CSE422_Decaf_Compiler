@@ -28,9 +28,6 @@ class Main {
               String text = token.getText();
               switch (token.getType()) {
                // TODO: add strings for the other types here...
-               case DecafScannerTokenTypes.ID:
-                type = " IDENTIFIER";
-                break;
                case DecafScannerTokenTypes.INTLITERAL:
                 type = " INTLITERAL";
                 break;
@@ -39,6 +36,9 @@ class Main {
                 break;
                case DecafScannerTokenTypes.STRINGLITERAL:
                 type = " STRINGLITERAL";
+                break;
+               case DecafScannerTokenTypes.ID:
+                type = " IDENTIFIER";
                 break;
                case DecafScannerTokenTypes.TK_true:
                 type = " BOOLEANLITERAL";
