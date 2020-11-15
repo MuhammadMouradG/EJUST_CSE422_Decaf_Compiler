@@ -103,10 +103,22 @@
     <exec executable="${tests}/scanner/test.sh" />
   </target>
 
+  <target name="test_scanner_hidden" depends="jar">
+    <!-- Set failonerror="true" when you're confident you're correct
+         and want to prevent accidentally regressing. -->
+    <exec executable="${tests}/scanner-hidden/test.sh" />
+  </target>
+
   <target name="test_parser" depends="jar">
     <!-- Set failonerror="true" when you're confident you're correct
          and want to prevent accidentally regressing. -->
     <exec executable="${tests}/parser/test.sh" />
+  </target>
+
+  <target name="test_parser_hidden" depends="jar">
+    <!-- Set failonerror="true" when you're confident you're correct
+         and want to prevent accidentally regressing. -->
+    <exec executable="${tests}/parser-hidden/test.sh" />
   </target>
 
   <target name="test_semantics" depends="jar">
@@ -134,7 +146,7 @@
   </target>
 
   <target name="integrationtests"
-          depends="test_scanner,test_parser,test_semantics,test_codegen,test_dataflow,test_opt">
+          depends="test_scanner,test_scanner_hidden,test_parser,test_parser_hidden,test_semantics,test_codegen,test_dataflow,test_opt">
   </target>
 
   <target name="tar" depends="clean">

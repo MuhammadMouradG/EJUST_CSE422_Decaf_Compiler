@@ -1,2 +1,3 @@
 // Two operators and an int literal.
+// -- represents a token in recent implementation of Decaf.
 --3

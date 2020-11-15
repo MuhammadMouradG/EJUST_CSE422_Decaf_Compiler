@@ -66,13 +66,12 @@ program: (import_decl)* (field_decl)* (method_decl)* EOF!;
 import_decl: TK_import^ ID SEMICOLON!;
 
 field_decl : type field (COMMA! field)* SEMICOLON!;
-field : ID (LSQUAR! INTLITERAL RSQUAR!)?;
+field : ID (LSQUARE! INTLITERAL RSQUARE!)?;
 
 method_decl : return_type ID^ LPAREN! method_params RPAREN! block;
 return_type : type | TK_void;
 method_params : (method_param (COMMA! method_param)*)?;
 method_param : type ID;
-
 block : LCURLY! (field_decl)* (statement)* RCURLY!;
 
 statement :
@@ -84,7 +83,7 @@ statement :
     |   return_
     |   continue_;
 
-assignment : location (ASSIGN^|PLUSASSIGN^|MINUSASSIGN^) expr SEMICOLON!;
+assignment : location (ASSIGN^|COMPOUND_ASSIGN_OP^) expr SEMICOLON!;
 if_ : TK_if^ LPAREN! expr RPAREN! block (else_)?;
 else_ : TL_else^ block;
 while_ : TK_while^ LPAREN! expr RPAREN! block;
@@ -96,19 +95,19 @@ method_call : ID^ LPAREN! (method_args)? RPAREN!;
 method_args : method_arg (COMMA! method_arg)*;
 method_arg : expr | STRINGLITERAL;
 
-location : ID^ (LSQUAR! expr RSQUAR!)?;
+location : ID^ (LSQUARE! expr RSQUARE!)?;
 
-type : TK_int | TK_boolean;
+type : TK_int | TK_bool;
 expr : quesexpr;
 atom : location | literal | LPAREN! expr RPAREN! | method_call;
 lengthexpr : AT^ ID | atom;
 minusexpr : MINUS^ minusexpr | lengthexpr;
-multiexpr : minusexpr ((TIMES^|SLASH^|PERCENT^) minusexpr)*;
+multiexpr : minusexpr ((STAR^|SLASH^|PERCENT^) minusexpr)*;
 addexpr : multiexpr ((PLUS^|MINUS^) multiexpr)*;
-compexpr : addexpr ((GTEATER^|LESS^|GE^|LE^) addexpr)*;
-eqexpr : compexpr ((EQ^|NEQ^) compexpr)*;
-andexpr : eqexpr (AND^ eqexpr)*;
-orexpr : andexpr (OR^ andexpr)*;
+compexpr : addexpr ((REL_OP^) addexpr)*;
+eqexpr : compexpr ((EQ_OP^) compexpr)*;
+andexpr : eqexpr (AND_OP^ eqexpr)*;
+orexpr : andexpr (OR_OP^ andexpr)*;
 quesexpr : orexpr (QUESTION^ quesexpr COLON! quesexpr)?;
 
 literal : INTLITERAL | CHARLITERAL | TK_true | TK_false;

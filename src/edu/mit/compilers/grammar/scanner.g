@@ -79,7 +79,8 @@ EXCLAM options          { paraphrase = "!"; }  : "!";
 
 REL_OP             : ('<' | '>' | "<=" | ">=");
 EQ_OP              : ("==" | "!=");
-COND_OP            : ("&&" | "||");
+AND_OP             : "&&";
+OR_OP              : "||";
 COMPOUND_ASSIGN_OP : ("+=" | "-=");
 INCREMENT_OP       : "++";
 DECREMENT_OP       : "--"; 
@@ -100,7 +101,7 @@ SL_COMMENT : "//" (~'\n')* '\n' {_ttype = Token.SKIP; newline (); };
 // Protected rule does not result in a token object that is passed to the
 // parser.
 protected CHAR               : (' '..'!' | '#'..'&' | '('..'[' | ']'..'~' | ESC);
-protected ESC                : '\\' ( '\"' | '\'' | '\\' | 't' | 'n' );
+protected ESC                : '\\' ( '"' | '\'' | '\\' | 't' | 'n' );
 protected ALPHA              : ('a'..'z' | 'A'..'Z' | '_');
 protected DIGIT              : '0'..'9';
 protected ALPHA_NUM          : (ALPHA | DIGIT);
