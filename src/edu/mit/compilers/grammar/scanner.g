@@ -92,7 +92,7 @@ STRINGLITERAL options { paraphrase = "a string literal"; } : '"' (CHAR)* '"';
 // Note that here, the {} syntax allows you to literally command the lexer
 // to skip mark this token as skipped, or to advance to the next line
 // by directly adding Java commands.
-WS_ : (((' ' | '\t' | '\n')+) {newline();}) {_ttype = Token.SKIP; };
+WS_ : (' ' | '\t' | '\n' {newline();}) {_ttype = Token.SKIP; };
 BLOCK_COMMENT : "/*" (options {greedy=false;} :.)* "*/";
 // Operator ~ used to invert a character or set of characters.
 SL_COMMENT : "//" (~'\n')* '\n' {_ttype = Token.SKIP; newline (); };

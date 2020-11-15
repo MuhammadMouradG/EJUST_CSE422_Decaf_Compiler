@@ -1,6 +1,6 @@
 // Decaf keywords
-boolean
-callout
+bool
+import
 else
 false
 if
