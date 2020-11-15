@@ -1,5 +1,5 @@
-2 boolean
-3 callout
+2 bool
+3 import
 4 else
 5 BOOLEANLITERAL false
 6 if
