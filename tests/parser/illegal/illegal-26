@@ -1,5 +1,5 @@
 void main ( ) {
-  int boolean;
+  int bool;
   int break;
   int int;
   int continue;
@@ -8,7 +8,8 @@ void main ( ) {
   int for; 
   int if; 
   int int; 
-  int return; 
+  int return;
+  int len;
   int true; 
   int void; 
   int while;

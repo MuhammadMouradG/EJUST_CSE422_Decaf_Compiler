@@ -60,7 +60,13 @@ options
   }
 }
 
-// `!` means don't include in abstract syntax tree (AST) 
+// `!` means don't include in abstract syntax tree (AST)
+// class Program { ... } it is deprecated in current implementation of Decaf.
+// When class Program { ... } form of test cases pass successfully the other test
+// cases will fail.
+// use
+// `program: TK_class TK_Program LCURLY! (field_decl)* (method_decl)* RCURLY! EOF!;`
+// line instead of the bellow one.
 program: (import_decl)* (field_decl)* (method_decl)* EOF!;
 
 import_decl: TK_import^ ID SEMICOLON!;
@@ -78,14 +84,16 @@ statement :
         assignment
     |   method_call SEMICOLON!
     |   if_
+    |   for_
     |   while_
     |   break_
     |   return_
     |   continue_;
 
-assignment : location (ASSIGN^|COMPOUND_ASSIGN_OP^) expr SEMICOLON!;
+assignment : location (((ASSIGN^|COMPOUND_ASSIGN_OP^) expr)|INCREMENT_OP|DECREMENT_OP) SEMICOLON!;
 if_ : TK_if^ LPAREN! expr RPAREN! block (else_)?;
-else_ : TL_else^ block;
+else_ : TK_else^ block;
+for_ : TK_for^ LPAREN! (ID ASSIGN expr) SEMICOLON! expr (SEMICOLON! (ID (LSQUARE! expr RSQUARE!)?) (((ASSIGN|COMPOUND_ASSIGN_OP) expr)|INCREMENT_OP|DECREMENT_OP))? RPAREN! block;
 while_ : TK_while^ LPAREN! expr RPAREN! block;
 break_ : TK_break^ SEMICOLON!;
 return_ : TK_return^ (expr)? SEMICOLON!;

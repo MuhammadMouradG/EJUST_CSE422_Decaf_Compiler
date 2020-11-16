@@ -18,6 +18,7 @@ options
 tokens 
 {
   "class";
+  "Program";
   "bool";
   "break";
   "import";
@@ -94,7 +95,7 @@ STRINGLITERAL options { paraphrase = "a string literal"; } : '"' (CHAR)* '"';
 // to skip mark this token as skipped, or to advance to the next line
 // by directly adding Java commands.
 WS_ : (' ' | '\t' | '\n' {newline();}) {_ttype = Token.SKIP; };
-BLOCK_COMMENT : "/*" (options {greedy=false;} :.)* "*/";
+BLOCK_COMMENT : "/*" (options {greedy=false;} :.)* "*/" {_ttype = Token.SKIP; };
 // Operator ~ used to invert a character or set of characters.
 SL_COMMENT : "//" (~'\n')* '\n' {_ttype = Token.SKIP; newline (); };
 

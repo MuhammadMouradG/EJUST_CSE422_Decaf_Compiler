@@ -1,11 +1,11 @@
 void main ( ) {
   if ( a > 10 ) {
-    for ( i = 0, a, 2 ) {
+    for ( i = 0; a; b=2 ) {
       a = a - 1;
     }
   }
   else {
-    for ( i = 0, a, 3 ) {
+    for ( i = 0; a; a=3 ) {
       a = a + 1;
     }
   }

@@ -1,4 +1,4 @@
-callout printf;
+import printf;
 void main ( ) {
   int char;
   char = 'a';
