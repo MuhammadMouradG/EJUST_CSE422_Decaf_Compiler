@@ -1,4 +1,4 @@
-# EJUST CSE 422 Compiler - Programing Language and Compiler 
+# EJUST CSE 422 - Programing Language and Compiler 
 
 From: [MIT 6.035: Computer Language Engineering](http://6.035.scripts.mit.edu/fa18/index.html)
 
@@ -21,15 +21,21 @@ From: [MIT 6.035: Computer Language Engineering](http://6.035.scripts.mit.edu/fa
 Assume basic components like `git` has been installed.
 
 ```bash
-sudo apt install ant antlr4
-sudo apt install openjdk-8-jdk
+sudo apt install ant antlr4 openjdk-8-jdk
 ```
 
 ## Usage
 
+To install,
+
+```bash
+git clone "https://github.com/MuhammadMouradG/EJUST_CSE422_Decaf_Compiler.git"
+```
+
 To compile the compiler,
 
 ```bash
+cd EJUST_CSE422_Decaf_Compiler
 ant
 ```
 
@@ -61,6 +67,5 @@ To test a single testcase,
 
 - Compilers: Principles, Techniques and Tools (Dragon book)
 - <http://6.035.scripts.mit.edu/sp16/schedule.html>
-- [ANTLR (Another Tool for Language Recognition)](http://antlr2.org/doc/index.html)
-- [Google Java Style Guide](https://google.github.io/styleguide/javaguide.html)
-- [ANTLR2 Manual](http://www.antlr2.org/doc/index.html)
+- [ANTLR (Another Tool for Language Recognition)](https://www.antlr.org/)
+- [ANTLR4 Manual](https://github.com/antlr/antlr4/blob/master/doc/index.md)
