@@ -39,7 +39,7 @@ cd EJUST_CSE422_Decaf_Compiler
 ant
 ```
 
-To test all the testcases of one component,
+To test all the testcases of one component, note that this command will indicate for each test case whether the test passed or failed.
 
 ```bash
 # for scanner tests
