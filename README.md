@@ -24,6 +24,9 @@ Assume basic components like `git` has been installed.
 sudo apt install ant antlr4 openjdk-8-jdk
 ```
 
+## Documentation
+Look at [Scanner-Parser](https://github.com/MuhammadMouradG/EJUST_CSE422_Decaf_Compiler/blob/main/doc/Scanner-Parser.md)
+
 ## Usage
 
 To install,
